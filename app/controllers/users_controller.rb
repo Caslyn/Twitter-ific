@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   	# user_params only to be used internally
   	@user = User.new(user_params) # Not the final implementation!
   	if @user.save
+      sign_in @user
   		flash[:success] = "Welcome to Caslyn's Sample App!"
   		redirect_to @user
   	else
