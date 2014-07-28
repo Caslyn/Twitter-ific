@@ -5,10 +5,15 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
-  	@user = User.new
+  	if signed_in? 
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def index
@@ -25,8 +30,10 @@ class UsersController < ApplicationController
 
   def create
   	# user_params only to be used internally
-  	@user = User.new(user_params) # Not the final implementation!
-  	if @user.save
+    @user = User.new(user_params) # Not the final implementation!
+  	if signed_in?
+      redirect_to root_path
+    elsif @user.save 
       sign_in @user
   		flash[:success] = "Welcome to Caslyn's Sample App!"
   		redirect_to @user
@@ -48,16 +55,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
-    redirect_to users_url
-  end
-
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_url, notice: "Please sign in."
-    end
+      delete_user = User.find(params[:id])
+      unless current_user == delete_user && current_user.admin?
+        delete_user.destroy
+        flash[:success] = "User deleted."
+        redirect_to users_url
+      end
   end
 
   def correct_user
