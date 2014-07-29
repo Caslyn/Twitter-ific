@@ -48,6 +48,15 @@ describe "StaticPages" do
 
         it { should have_link("0 following", href: following_user_path(user)) }
         it { should have_link("1 followers", href: followers_user_path(user)) }
+      
+        describe "stats for following/followers" do
+          let(:followed_count) { user.followed_users.count }
+          let(:followers_count) { user.followers.count }
+          it { should have_text("#{followed_count} following") }
+          it { should have_text("#{followers_count} followers") }
+        end
+
+
       end
     end
   end

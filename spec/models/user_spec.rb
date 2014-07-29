@@ -204,6 +204,8 @@ describe User do
 
 			it { should_not be_following(other_user) }
 			its(:followed_users) { should_not include(other_user) }
+			its(:feed) { should_not include(other_user.microposts) }
 		end
+
 	end
 end
