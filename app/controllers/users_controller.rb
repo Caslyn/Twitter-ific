@@ -20,22 +20,28 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
-  	def user_params
-		# require the params hash to have a :user attribute 
-		# permit the name, email, password & password confirmation
-		# attributes (but no others)
-		params.require(:user).permit(:name, :email, :password,
-									 :password_confirmation)
-	end
+  def user_params
+	# require the params hash to have a :user attribute 
+	# permit the name, email, password & password confirmation
+	# attributes (but no others)
+	params.require(:user).permit(:name, :email, :password,
+								 :password_confirmation)
+end
 
   def create
-  	# user_params only to be used internally
-    @user = User.new(user_params) # Not the final implementation!
+
+    if :guest 
+      @user = User.new(name: "Guest", email: "guest@example.com",
+        password: "guest", password_confirmation: "guest")
+    else
+      @user = User.new(user_params)
+    end
+
   	if signed_in?
       redirect_to root_path
     elsif @user.save 
       sign_in @user
-  		flash[:success] = "Welcome to Caslyn's Sample App!"
+  		flash[:success] = "Welcome to Caslyn's Twitter App!"
   		redirect_to @user
   	else
   		render 'new'

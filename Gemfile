@@ -51,6 +51,11 @@ group :production do
 	gem 'rails_12factor', '0.0.2'
 end
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 # gem 'spring',        group: :development
 
