@@ -29,13 +29,8 @@ class UsersController < ApplicationController
 end
 
   def create
-
-    if :guest 
-      user = User.new(name: "Guest", email: "guest@example.com",
-        password: "guest", password_confirmation: "guest")
-    else
-      user = User.new(user_params)
-    end
+    
+    user = User.new(user_params)
 
   	if signed_in?
       redirect_to root_path
