@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
 			redirect_back_or user
 		elsif params[:guest] 
 			user = User.find_by(email: params[:guest])
+			sign_in user
 			redirect_to user_url user
 		else
 			# Create an error message and re-render the signin form
