@@ -30,7 +30,7 @@ end
 
   def create
     
-    user = User.new(user_params)
+    @user = User.new(user_params)
 
   	if signed_in?
       redirect_to root_path
