@@ -31,10 +31,10 @@ end
   def create
 
     if :guest 
-      @user = User.new(name: "Guest", email: "guest@example.com",
+      user = User.new(name: "Guest", email: "guest@example.com",
         password: "guest", password_confirmation: "guest")
     else
-      @user = User.new(user_params)
+      user = User.new(user_params)
     end
 
   	if signed_in?
