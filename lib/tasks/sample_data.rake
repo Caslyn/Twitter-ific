@@ -21,6 +21,7 @@ end
 						 email: email,
 						 password: password,
 						 password_confirmation: password)
+		end
 	end
 
 	def make_microposts
@@ -40,4 +41,3 @@ end
 		followers.each { |follower| follower.follow!(user) }
 	end
 
-end
