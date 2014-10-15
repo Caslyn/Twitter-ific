@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order(:id).paginate(page: params[:page])
+    @users = User.all.paginate(page: params[:page])
   end
 
   def user_params
