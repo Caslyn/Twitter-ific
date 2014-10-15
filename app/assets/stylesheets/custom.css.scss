@@ -169,6 +169,7 @@ aside {
 .user_avatars {
 	overflow: auto;
 	margin-top: 10px;
+
 	.gravatar {
 		margin: 1px 1px
 	}
@@ -237,10 +238,7 @@ input {
 .timestamp {
 	color: $grayLight;
 }
-.gravatar {
-	float: left;
-	margin-right:10px;
-}
+
 aside {
 	textarea {
 		height: 100px;
