@@ -18,6 +18,23 @@ html {
 
 body {
 	padding-top: 60px;
+	background-size: cover;
+}
+
+body:not(.signed-in) {
+	background-image: url(clouds.jpg);
+}
+
+body.signed-in {
+	background: rgb(240,249,255); /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(240,249,255,1) 0%, rgba(203,235,255,1) 47%, rgba(161,219,255,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(240,249,255,1)), color-stop(47%,rgba(203,235,255,1)), color-stop(100%,rgba(161,219,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 
 section {
@@ -28,8 +45,11 @@ textarea {
 	resize: vertical;
 }
 
+
 .center {
 	text-align: center;
+	background: rgba(238, 238, 238, 0.6);
+
 	h1 {
 		margin-bottom: 10px;
 	}
@@ -203,6 +223,13 @@ input {
 .field_with_errors {
 	@extend .control-group;
 	@extend .error;
+}
+
+.help-form, .edit-form {
+	background: rgba(238, 238, 238, 0.7);
+	padding: 25px;
+	border: 1px solid black;
+	border-radius: 15px;
 }
 
 /* Users index */

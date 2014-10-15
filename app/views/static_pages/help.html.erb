@@ -1,8 +1,31 @@
 <% provide(:title, 'Help') %>
 <h1>Help</h1>
-<p>
-	Get help on the Ruby on Rails Tutorial at the
-	<a href="http://railstutorial.org/help">Rails Tutorial help page</a>. 
-	To get help on this sample app, see the 
-	<a href="http://railstutorial.org/book">Rails Tutorial book</a>.
-</p>
+<h2>Questions? Submit them here. </h2>
+
+<div class="help-form">
+	<form role="form">
+	  <div class="form-group">
+	    <label for="InputEmail1">Contact Email</label>
+	    <input type="email" class="form-control" id="InputEmail1" placeholder="Enter Email">
+	  </div>
+
+	  <div class="form-group">
+	  	<label for="InputType">Question Type</label>
+		  <select class="form-control">
+			  <option>Complements/Praise</option>
+			  <option>Complaints</option>
+			  <option>Billing</option>
+			  <option>Other</option>
+			</select>
+		</div>
+
+	  <div class="form-group">
+	  	<label for="InputQuestion">Question</label>
+		  <textarea class="form-control" rows="3" id="InputQuestion"></textarea>
+		 </div>
+		 
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+
+
